@@ -33,7 +33,7 @@ try {
 
     // Prepare PayPal payment URL
     $paypalUrl = "https://www.paypal.com/cgi-bin/webscr?...";
-    $redirectUrl = $paypalUrl . "&business=YOUR_PAYPAL_EMAIL&item_name=PPV_Video&amount=99.99&currency_code=USD&invoice=" . $orderId . "&notify_url=YOUR_IPN_HANDLER_URL";
+    $redirectUrl = $paypalUrl . "&business=YOUR_PAYPAL_EMAIL&item_name=PPV_Video&amount=99.99&currency_code=USD&invoice=" . $orderId . "&notify_url=YOUR_IPN_HANDLER_URL&return=YOUR_SUCCESS_URL&cancel_return=YOUR_CANCEL_URL";
 
     // Return the redirect URL to the frontend
     echo json_encode(['redirectUrl' => $redirectUrl]);
