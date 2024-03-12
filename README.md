@@ -1,4 +1,4 @@
-# ppv-video
+# PPV Video Site
 pay-per-view video site
 
 MySQL Databases
