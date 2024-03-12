@@ -31,12 +31,17 @@ try {
     $stmt = $pdo->prepare("INSERT INTO orders (order_id, name, email, address, city, state, zip, county, phone, amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->execute([$orderId, $name, $email, $address, $city, $state, $zip, $county, $phone, 99.99]); // Hardcoded amount for simplicity
 
-    // Prepare PayPal payment URL
-    $paypalUrl = "https://www.paypal.com/cgi-bin/webscr?...";
-    $redirectUrl = $paypalUrl . "&business=YOUR_PAYPAL_EMAIL&item_name=PPV_Video&amount=99.99&currency_code=USD&invoice=" . $orderId . "&notify_url=YOUR_IPN_HANDLER_URL&return=YOUR_SUCCESS_URL&cancel_return=YOUR_CANCEL_URL";
+ // Prepare PayPal payment URL
+$paypalUrl = "https://www.paypal.com/cgi-bin/webscr?...";
+$redirectUrl = $paypalUrl . "&business=YOUR_PAYPAL_EMAIL&item_name=PPV_Video&amount=99.99&currency_code=USD&invoice=" . $orderId . "&notify_url=YOUR_IPN_HANDLER_URL&return=YOUR_SUCCESS_URL&cancel_return=YOUR_CANCEL_URL";
 
-    // Return the redirect URL to the frontend
-    echo json_encode(['redirectUrl' => $redirectUrl]);
+// Additional line you suggested (already present in the original code)
+$redirectUrl = $paypalUrl . "&business=YOUR_PAYPAL_EMAIL&item_name=PPV_Video&amount=99.99&currency_code=USD&invoice=" . $orderId . "&notify_url=YOUR_IPN_HANDLER_URL&return=http://your-domain.com/success.php&cancel_return=http://your-domain.com/cancel.php";
+
+// Return the redirect URL to the frontend
+echo json_encode(['redirectUrl' => $redirectUrl]);
+    
+
 } catch (PDOException $e) {
     // Handle database connection errors
     echo "Error: " . $e->getMessage();
