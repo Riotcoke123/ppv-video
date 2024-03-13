@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Streaming Page</title>
+    <script src="https://content.jwplatform.com/libraries/your-jwplayer-library.js"></script>
+</head>
+<body>
+    <!-- JW Player container -->
+    <div id="jwplayer-container"></div>
+
+    <script>
+        // Obfuscated and minified JavaScript code for video player initialization
+        var playerInstance = jwplayer("jwplayer-container");
+        playerInstance.setup({
+            file: "https://your-secure-streaming-server.com/encrypted-video.m3u8",
+            drm: {
+                fairplay: {
+                    certificate: "path/to/fairplay_certificate.der",
+                    licenseServer: "https://your-fairplay-license-server.com"
+                }
+            },
+            // Additional JW Player configuration options
+            // ...
+        });
+    </script>
+</body>
+</html>
